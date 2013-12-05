@@ -8,16 +8,17 @@
 
 #import "PWCViewController.h"
 
-static NSString * const kSpreadsheetURL = @"https://docs.google.com/forms/d/1ctrAHWmIz-j_47LjRdWPnzHE8ELHjE_MW1X984p3csw/formResponse";
+static NSString * const kSpreadsheetURL =
+    @"https://docs.google.com/forms/d/1ctrAHWmIz-j_47LjRdWPnzHE8ELHjE_MW1X984p3csw/formResponse";
 static NSString * const kUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
 
 static NSString * const kBlueRegionIdentifier = @"au.com.pwc.BlueBeacon";
 static NSString * const kGreenRegionIdentifier = @"au.com.pwc.GreenBeacon";
 static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
 
-//Blue beacon Major:394 Minor:58605
-//Green beacon  Major:40836 Minor:18108
-//Purple beacon Major:29836 Minor:57466
+//Blue      beacon Major:394    Minor:58605
+//Green     beacon Major:40836  Minor:18108
+//Purple    beacon Major:29836  Minor:57466
 
 @interface PWCViewController ()
 
