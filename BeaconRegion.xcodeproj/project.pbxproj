@@ -21,6 +21,9 @@
 		41A06E5B18509A2900D56342 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E3D18509A2900D56342 /* UIKit.framework */; };
 		41A06E6318509A2900D56342 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41A06E6118509A2900D56342 /* InfoPlist.strings */; };
 		41A06E6518509A2900D56342 /* BeaconRegionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A06E6418509A2900D56342 /* BeaconRegionTests.m */; };
+		41A06E6F18509CFD00D56342 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E6E18509CFD00D56342 /* CoreBluetooth.framework */; };
+		41A06E7118509D0700D56342 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E7018509D0700D56342 /* CoreLocation.framework */; };
+		7404788B6F7A42D684E1F636 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ECC9D4635442BE871F3A5B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18ECC9D4635442BE871F3A5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A06E3618509A2900D56342 /* BeaconRegion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconRegion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A06E3918509A2900D56342 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		41A06E3B18509A2900D56342 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +57,9 @@
 		41A06E6018509A2900D56342 /* BeaconRegionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeaconRegionTests-Info.plist"; sourceTree = "<group>"; };
 		41A06E6218509A2900D56342 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		41A06E6418509A2900D56342 /* BeaconRegionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaconRegionTests.m; sourceTree = "<group>"; };
+		41A06E6E18509CFD00D56342 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		41A06E7018509D0700D56342 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		513E84E1B96A4E35BCA9284E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +67,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A06E7118509D0700D56342 /* CoreLocation.framework in Frameworks */,
+				41A06E6F18509CFD00D56342 /* CoreBluetooth.framework in Frameworks */,
 				41A06E3C18509A2900D56342 /* CoreGraphics.framework in Frameworks */,
 				41A06E3E18509A2900D56342 /* UIKit.framework in Frameworks */,
 				41A06E3A18509A2900D56342 /* Foundation.framework in Frameworks */,
+				7404788B6F7A42D684E1F636 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +96,7 @@
 				41A06E5E18509A2900D56342 /* BeaconRegionTests */,
 				41A06E3818509A2900D56342 /* Frameworks */,
 				41A06E3718509A2900D56342 /* Products */,
+				513E84E1B96A4E35BCA9284E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +112,13 @@
 		41A06E3818509A2900D56342 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41A06E7018509D0700D56342 /* CoreLocation.framework */,
+				41A06E6E18509CFD00D56342 /* CoreBluetooth.framework */,
 				41A06E3918509A2900D56342 /* Foundation.framework */,
 				41A06E3B18509A2900D56342 /* CoreGraphics.framework */,
 				41A06E3D18509A2900D56342 /* UIKit.framework */,
 				41A06E5818509A2900D56342 /* XCTest.framework */,
+				18ECC9D4635442BE871F3A5B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41A06E6818509A2900D56342 /* Build configuration list for PBXNativeTarget "BeaconRegion" */;
 			buildPhases = (
+				CE2EC6D008EE435883499AAF /* Check Pods Manifest.lock */,
 				41A06E3218509A2900D56342 /* Sources */,
 				41A06E3318509A2900D56342 /* Frameworks */,
 				41A06E3418509A2900D56342 /* Resources */,
+				A2219A240DC04DF0AFDB36A1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,6 +260,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A2219A240DC04DF0AFDB36A1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE2EC6D008EE435883499AAF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		41A06E3218509A2900D56342 /* Sources */ = {
@@ -376,6 +425,7 @@
 		};
 		41A06E6918509A2900D56342 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 513E84E1B96A4E35BCA9284E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -389,6 +439,7 @@
 		};
 		41A06E6A18509A2900D56342 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 513E84E1B96A4E35BCA9284E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -461,6 +512,7 @@
 				41A06E6A18509A2900D56342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41A06E6B18509A2900D56342 /* Build configuration list for PBXNativeTarget "BeaconRegionTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +521,7 @@
 				41A06E6D18509A2900D56342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
