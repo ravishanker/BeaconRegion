@@ -205,7 +205,7 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     
     
     NSLog(@"Region Exit Time: %@", self.regionExitTime);
-    NSLog(@"Time Interval: %.2fm", self.timeInterval);
+    NSLog(@"Time Interval: %.2f", self.timeInterval);
     
     
     notification.alertBody = [NSString stringWithFormat:@"You're inside %@", region.identifier];
@@ -321,7 +321,7 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     NSLog(@"%@ User Data", self.userData);
 
     NSString *params = [NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",
-                        EST_UUID, [NSString stringWithFormat:@"%.2fm", self.timeInterval],
+                        EST_UUID, [NSString stringWithFormat:@"%.2f", self.timeInterval],
                         MAJOR, [self dateStringWithDSTOffset:self.regionEntryTime],
                         MINOR, [self dateStringWithDSTOffset:self.regionExitTime],
                         RSSI, region.identifier,
