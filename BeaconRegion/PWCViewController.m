@@ -45,10 +45,12 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
-    _locationManager.distanceFilter = 2.0; // two meters
+//    _locationManager.distanceFilter = 2.0; // two meters
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
+    NSMutableArray * regions;
     CLBeaconRegion *region;
+    
     NSUUID *estimoteUUID = [[NSUUID alloc] initWithUUIDString:kUUID];
     
     // Blue Estimote
@@ -57,23 +59,6 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
                                                      minor:58605
                                                 identifier:kBlueRegionIdentifier];
     
-    // launch app when display is turned on and inside region
-    region.notifyEntryStateOnDisplay = YES;
-    //To prevent redundant notifications from being delivered to the user
-    region.notifyOnEntry = NO;
-    
-    if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]]) {
-        [_locationManager startMonitoringForRegion:region];
-        
-        // get status update right away for UI
-        //        [_locationManager requestStateForRegion:region];
-        
-        //        // Start ranging for beacons
-        //        [_locationManager startRangingBeaconsInRegion:self.region];
-        
-    } else {
-        NSLog(@"This device does not support monitoring beacon regions");
-    }
     
     // Green Estimote
     region = [[CLBeaconRegion alloc] initWithProximityUUID:estimoteUUID
@@ -81,42 +66,37 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
                                                      minor:18108
                                                 identifier:kGreenRegionIdentifier];
     
-    // launch app when display is turned on and inside region
-    region.notifyEntryStateOnDisplay = YES;
-    //To prevent redundant notifications from being delivered to the user
-    region.notifyOnEntry = NO;
     
-    if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]]) {
-        [_locationManager startMonitoringForRegion:region];
-        
-        // get status update right away for UI
-        //        [_locationManager requestStateForRegion:region];
-        
-    } else {
-        NSLog(@"This device does not support monitoring beacon regions");
-    }
-    
-    // Green Estimote
+    // Purple Estimote
     region = [[CLBeaconRegion alloc] initWithProximityUUID:estimoteUUID
                                                      major:29836
                                                      minor:57466
                                                 identifier:kPurpleRegionIdentifier];
     
-    // launch app when display is turned on and inside region
-    region.notifyEntryStateOnDisplay = YES;
-    //To prevent redundant notifications from being delivered to the user
-    region.notifyOnEntry = NO;
     
     if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]]) {
-        [_locationManager startMonitoringForRegion:region];
         
-        // get status update right away for UI
-        //        [_locationManager requestStateForRegion:region];
+        for (CLBeaconRegion *region in regions) {
+            // launch app when display is turned on and inside region
+            [_locationManager startMonitoringForRegion:region];
+            
+            region.notifyEntryStateOnDisplay = YES;
+            
+            //To prevent redundant notifications from being delivered to the user
+//            region.notifyOnEntry = NO;
+            
+            // get status update right away for UI
+//            [_locationManager requestStateForRegion:region];
+        }
+        
+
+
         
     } else {
         NSLog(@"This device does not support monitoring beacon regions");
     }
     
+    NSLog(@"Monitored Regions %@", _locationManager.monitoredRegions);
 }
 
 
@@ -205,7 +185,7 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     
     NSLog(@"Region Entry Time: %@", self.regionEntryTime);
     
-    notification.alertBody = @"You're inside the region";
+    notification.alertBody = [NSString stringWithFormat:@"You're inside %@", region.identifier];
     
     [self setProductOfferWithRegionIdentifer:region.identifier];
     
@@ -228,7 +208,7 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     NSLog(@"Time Interval: %f", self.timeInterval);
     
     
-    notification.alertBody = @"You're outside the region";
+    notification.alertBody = [NSString stringWithFormat:@"You're inside %@", region.identifier];
     
     if (_isFBdataFetched) {
         [self postDataToSpreadsheetViaForm:region];
