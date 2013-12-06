@@ -321,7 +321,7 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     NSLog(@"%@ User Data", self.userData);
 
     NSString *params = [NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",
-                        EST_UUID, [NSString stringWithFormat:@"%f", self.timeInterval],
+                        EST_UUID, [NSString stringWithFormat:@"%.2fm", self.timeInterval],
                         MAJOR, [self dateStringWithDSTOffset:self.regionEntryTime],
                         MINOR, [self dateStringWithDSTOffset:self.regionExitTime],
                         RSSI, region.identifier,
