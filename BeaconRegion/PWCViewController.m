@@ -199,7 +199,8 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     NSLog(@"Outside Region %@", region.identifier);
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     
-    
+    self.offerImage.image = [UIImage imageNamed:@"iconBeacon"];
+
     self.timeInterval = [[NSDate date] timeIntervalSinceDate:self.regionEntryTime];
     self.regionExitTime = [NSDate date];
     
