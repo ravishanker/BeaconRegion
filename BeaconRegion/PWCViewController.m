@@ -185,12 +185,10 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     
     NSLog(@"Region %@ identifier", region.identifier );
     
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-//        [self setProductOfferWithRegionIdentifer:region.identifier];
-        
-        // don't send any notifications if app is open
-        return;
+    if (CLRegionStateInside == state) {
+        [self setProductOfferWithRegionIdentifer:region.identifier];
     }
+    
     
 }
 
@@ -251,6 +249,7 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
     if (self.session.isOpen) {
         //        NSLog(@"%@ accessToken", fbTokenData);
         //        [self fetchFBUserData];
+        // TODO: Read archived FB Data
         
     } else {
         //Login with Facebook native login diaglog
@@ -288,7 +287,6 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
              NSString *userInfo = @"";
              
              self.userData[@"fb_id"] = user.id;
-             // Example: typed access (name)
              // - no special permissions required
              userInfo = [userInfo
                          stringByAppendingString:
@@ -296,7 +294,6 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
                           user.name]];
              self.userData[@"name"] = user.name;
              
-             // Example: typed access (name)
              // - no special permissions required
              userInfo = [userInfo
                          stringByAppendingString:
@@ -305,7 +302,6 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
              
              self.userData[@"gender"] = user[@"gender"];
              
-             // Example: typed access (email)
              // - email permission required
              userInfo = [userInfo
                          stringByAppendingString:
@@ -315,8 +311,6 @@ static NSString * const kPurpleRegionIdentifier = @"au.com.pwc.PurpleBeacon";
              self.userData[@"email"] = user[@"email"];
              
              NSLog(@"=== FB UserInfo === \n%@", userInfo);
-             
-             //             [[NSNotificationCenter defaultCenter] postNotificationName:@"FBDataFetched" object:nil];
              
              _isFBdataFetched = YES;
          }
